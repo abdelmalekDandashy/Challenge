@@ -4,7 +4,7 @@
 
 const initialState = { 
     
-    TopArticles: [] 
+    TopArticles: ['love'] 
 };
 
  const TopArticlesReducer = (state = initialState, action) => {
