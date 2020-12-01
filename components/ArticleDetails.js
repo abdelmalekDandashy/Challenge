@@ -1,3 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable semi */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/* eslint-disable no-shadow */
+/* eslint-disable comma-dangle */
+/* eslint-disable quotes */
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
 import { Modal, StyleSheet, Text, View,TouchableHighlight,Image, Button, Share } from 'react-native';
 import { connect, useSelector, useDispatch, ReactReduxContext } from 'react-redux'

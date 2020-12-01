@@ -1,3 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable semi */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/* eslint-disable no-shadow */
+/* eslint-disable comma-dangle */
+/* eslint-disable quotes */
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, FlatList, Image, TouchableOpacity, Platform, TouchableNativeFeedback, Modal, TouchableHighlight, Button } from 'react-native';
 import { connect, useSelector, useDispatch } from 'react-redux'
@@ -41,7 +51,7 @@ const TopArticles = (props) => {
     setSearchInput(val);
   }
 
-  const onSearch = (searchInput) => {   //////// HON onClick lal search Button 
+  const onSearch = (searchInput) => {   
     props.SearchArtical(searchInput);
      
     setReRenderBoolean(reRenderBoolean);
@@ -87,7 +97,7 @@ const TopArticles = (props) => {
         <ArticleDetails visible={modalVisible} setVisible={setModalVisible}></ArticleDetails>
         {show ?
           <FlatList style={styles.FlatList}
-            data={props.articles}  /////////////////////////////////////////?//////////////////////////////////////////////////////
+            data={props.articles} 
             keyExtractor={item => (item.id)}
             renderItem={itemData => (
               <TouchableCmp useForeground onPress={() => { handleClick(itemData) }}>
@@ -122,7 +132,7 @@ const TopArticles = (props) => {
           <View>
             <Button title={'GO HOME'} onPress={()=>{back()}}></Button>
             <FlatList extraData={reRenderBoolean} style={styles.FlatList}
-            data={mySearchData}  /////////////////////////////////////////?//////////////////////////////////////////////////////
+            data={mySearchData} 
             keyExtractor={item => (item.id)}
             renderItem={itemData => (
               <TouchableCmp useForeground onPress={() => { handleClick(itemData) }}>
