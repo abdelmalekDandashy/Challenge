@@ -1,3 +1,4 @@
+/* eslint-disable keyword-spacing */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable semi */
 /* eslint-disable no-unused-vars */
@@ -35,7 +36,13 @@ const ArticleDetails = (props) => {
 
 
  let myData= useSelector(state=>state.artDetails.articlesDetails.item) 
+//  let imgURL = (myData.imgURL.url !== undefined || myData.imgURL.url !== null) ? myData.imgURL.url : 'newsgraphics/images/icons/defaultPromoCrop.png'
+//    console.log(imgURL);
 
+
+
+
+  console.log('/////////////');
  let icn = ( myData) ? myData : null
  if (icn == null) {
     return(<Text></Text>)

@@ -82,16 +82,30 @@ const TopArticles = (props) => {
               placeholder="Type Here..."
             />
           </View>
-          <View style={styles.buttonBox}>
+
+
+
+          {/* <View style={styles.buttonBox}>
             <Button title={'Search'}
               style={styles.button}
               onPress={() => onSearch(searchInput)}
+              // color={'white'}
               
-              
-            >
+            ></Button>
+          </View> */}
 
-            </Button>
-          </View>
+          
+            <TouchableHighlight onPress={() => onSearch(searchInput)}>
+              <View style={styles.button}>
+                <Text>SEARCH</Text>
+              </View>
+            </TouchableHighlight>
+           
+
+
+
+
+
 
         </View>
         <ArticleDetails visible={modalVisible} setVisible={setModalVisible}></ArticleDetails>
@@ -129,13 +143,14 @@ const TopArticles = (props) => {
               await dispatch(articlesActions.getArticles());
             }}
           /> :
-          <View>
+          <View >
             <Button title={'GO HOME'} onPress={()=>{back()}}></Button>
             <FlatList extraData={reRenderBoolean} style={styles.FlatList}
             data={mySearchData} 
             keyExtractor={item => (item.id)}
             renderItem={itemData => (
-              <TouchableCmp useForeground onPress={() => { handleClick(itemData) }}>
+              <View>
+                <TouchableCmp useForeground onPress={() => { handleClick(itemData) }}>
                 <View>
                   <ArticleDetails visible={visible}
                     setVisible={setVisible}
@@ -156,6 +171,7 @@ const TopArticles = (props) => {
                   ></ArticleItems>
                 </View>
               </TouchableCmp>
+              </View>
             )}
 
 
@@ -174,25 +190,31 @@ const TopArticles = (props) => {
 
 const styles = StyleSheet.create({
   button: {
-
-    color: 'white',
-    height: '100%',
-    width: '100%',
-    backgroundColor: 'white',
-    alignItems: 'center'
-
-
-
-  },
-  buttonBox: {
-    flex: 1,
+    alignItems: "center",
+    justifyContent: 'center',
+    backgroundColor: "#DDDDDD",
+    padding: 10,
+    flex:1,
     borderWidth: 2,
     borderRadius: 4,
     margin: 2,
-    flexDirection: 'row',
-    justifyContent: 'center'
-
   },
+
+
+      search: { ///////////////
+        flexDirection: 'row',
+        alignItems: 'stretch',
+        justifyContent: 'flex-end',
+        width: '100%',
+    
+      },
+      touchable: {
+        borderRadius: 10,
+        overflow: 'hidden',
+        justifyContent: 'center', ///////////////////
+        flex: 1,
+        margin: 15
+      },
   searchBarBox: {
     flex: 3,
     borderWidth: 2,
@@ -206,13 +228,6 @@ const styles = StyleSheet.create({
 
   },
 
-  search: {
-    flexDirection: 'row',
-    alignItems: 'stretch',
-    justifyContent: 'flex-end',
-    width: '100%',
-
-  },
   FlatList: {
 
     height: '100%',
@@ -222,13 +237,6 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%'
-  },
-  touchable: {
-    borderRadius: 10,
-    overflow: 'hidden',
-    justifyContent: 'center', ///////////////////
-    flex: 1,
-    margin: 15
   },
   article: {
     height: 300,
@@ -254,9 +262,15 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   nzel: {
-    marginTop: 40,
+    marginTop: 43,
     
-  }
+  },
+  openButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
 });
 
 
