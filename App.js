@@ -1,57 +1,47 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-/* eslint-disable */
+// import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet
-} from 'react-native';
-import { createStore, combineReducers } from 'redux'; 
-import TopArticlesReducer from './store/Reducers/TopArticles'; 
-import { Provider } from 'react-redux'; 
-import { useSelector } from 'react-redux';
-import Home from './components/Home';
+import { StyleSheet, Text, View } from 'react-native';
+import {Provider} from 'react-redux';
+import TopArticles from './components/TopArticles';
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import ReduxThunk from "redux-thunk";
+import PostReducer from "./store/reducers/articleReducers";
+import articleDetailsReducer from './store/reducers/articleDetailsReducer'
+import  searchReducer from './store/reducers/searchReducer'
 
-
-const App = () => {
-
-  const rootReducer = combineReducers({ 
-    Top: TopArticlesReducer 
-  });
-  const store = createStore(rootReducer); 
-
-
-  // const TopArticles = useSelector(state => state.Top.TopArticles);
-  // console.log(TopArticles);
+const rootreducer = combineReducers({
+  art: PostReducer,
+  searchItem : searchReducer ,
+  artDetails:articleDetailsReducer 
   
+});
+// const looger = (store) => {
+//   return (next) => {
+//     return (action) => {
+//       // console.log("[Middleware] Dispatching", action);
+//       const result = next(action);
+//       console.log("[Middleware] next state", store.getState());
+//       return result;
+//     };
+//   };
+// };
+const store = createStore(rootreducer, composeWithDevTools( applyMiddleware(ReduxThunk)));
+export default function App() {
   return (
-
-    <Provider store={store}> 
-        <View style={styles.Body}>
-           <Text >marhaba</Text>
-            <Home></Home>
-     
-        </View>
+    <Provider store={store}>
+      <View style={styles.container}>
+      <TopArticles/>
+      </View>
     </Provider>
-
-    
-
-    
   );
-
-};
+}
 
 const styles = StyleSheet.create({
-  Body: {
-    backgroundColor: 'red',
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
- 
 });
-
-export default App;
